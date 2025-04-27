@@ -9,29 +9,6 @@ It allows users to submit support tickets, track statuses, communicate with supp
 
 ---
 
-## Goals
-- Allow users to submit and monitor support tickets.
-- Enable agents to manage, respond to, and resolve tickets efficiently.
-- Provide admins with tools for ticket assignment, escalation, and monitoring.
-- Track ticket metrics (resolution time, ticket volume) through analytics dashboards.
-- Ensure secure access control through role-based authentication.
-- Gather customer feedback after ticket resolution.
-
----
-
-## Development Methodology
-**Approach**: Agile Methodology  
-**Timeline**: 1 Month (4 Sprints)
-
-| Sprint | Focus | Goal |
-|:------:|:------|:-----|
-| Sprint 1 | System Setup & Role Management | Implement user registration, login, role-based access, and initial database schema. |
-| Sprint 2 | Ticket Submission & Dashboard | Develop ticket creation, status tracking, and agent/admin dashboards. |
-| Sprint 3 | Ticket Management & Communication | Implement ticket assignment, messaging, search, escalation, and categorization. |
-| Sprint 4 | Final Features, SLA & Deployment | Finalize SLA timers, notifications, analytics, file attachments, and prepare for deployment. |
-
----
-
 ## Features
 - User registration and login system
 - Role-based access (Admin, Agent, User)
@@ -53,9 +30,9 @@ It allows users to submit support tickets, track statuses, communicate with supp
 ---
 
 ## Tech Stack
-- **Frontend**: React.js, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: MySQL (or PostgreSQL)
+- **Frontend**: Bootstrap, JavaScript, jQuery, Css
+- **Backend**: JS Framework, Express.js
+- **Database**: MySQL 
 
 ---
 
