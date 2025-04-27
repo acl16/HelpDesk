@@ -9,13 +9,13 @@ It allows users to submit support tickets, track statuses, communicate with supp
 
 ---
 ## How to Use HelpDesk 🛠️
-# 1. Sign Up and Log In
+## 1. Sign Up and Log In
 
 New users: Register by providing your name, email, and password.
 
 Existing users: Log in with your credentials.
 
-# 2. Submitting a Support Ticket
+## 2. Submitting a Support Ticket
 Click "New Ticket".
 Fill in the details: Category, Priority (Low, Medium, High), Description.
 
@@ -23,27 +23,27 @@ Attach files if needed.
 
 Submit — your ticket will appear under "My Tickets".
 
-# 3. Tracking Your Ticket
+## 3. Tracking Your Ticket
 View the ticket status: Open, Pending, Resolved.
 
 Communicate with agents via ticket comments.
 
 Check the ticket timeline for updates.
 
-# 4. Admin: Managing Tickets
+## 4. Admin: Managing Tickets
 View tickets assigned to you.
 
 Add comments, change status, escalate, or reassign if needed.
 
 Close tickets once resolved and send closure notification.
 
-# 5. Notifications
+## 5. Notifications
 Get in-app or email notifications for updates, new comments, or ticket status changes.
 
-# 6. Analytics Dashboard
+## 6. Analytics Dashboard
 Track metrics like number of tickets, resolution times, SLA breaches, and customer satisfaction.
 
-# 7. After Ticket Closure
+## 7. After Ticket Closure
 Users receive a satisfaction survey to rate the service.
 
 ## Features
