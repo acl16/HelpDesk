@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  header {
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    color: #007bff;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+  }
+  
+  .hero {
+    text-align: center;
+    padding: 20px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+  
+  .hero p {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .secondary {
+    background-color: #fff;
+    color: #007bff;
+    border: 1px solid #007bff;
+  }
+  
+  .how-it-works {
+    background: #f9f9f9;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .how-it-works h2{
+    font-size: 24px;
+    margin-bottom: 40px;
+  }
+    
+  .steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .step {
+    flex: 1;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: center;
+    min-width: 250px;
+  }
+  
+  .icon {
+    width: 50px;
+    height: 50px;
+    background: gray;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+  }
+  
+  footer {
+    background: #fff;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #666;
+    font-size: 14px;
+  }
+  
