@@ -1,0 +1,94 @@
+body {
+    background: linear-gradient(to right, #1f1f1f, #2c3e50);
+    color: #f8f9fa;
+    min-height: 100vh;
+    margin-left: 250px;
+    transition: margin-left 0.3s;
+  }
+
+  #sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px;
+    background-color: #343a40;
+    padding: 1rem;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  #sidebar.hidden {
+    transform: translateX(-100%);
+  }
+
+  #sidebar .sidebar-link {
+    color: #fff;
+    display: block;
+    padding: 10px 0;
+    text-decoration: none;
+  }
+
+  #sidebar .sidebar-link:hover {
+    color: #0d6efd;
+  }
+
+  .burger-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .top-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .burger-container {
+    position: absolute;
+    left: 0;
+  }
+
+  .dashboard-card {
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .table-container {
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .card {
+    background-color: #2b2b2b;
+    color: #f8f9fa;
+  }
+
+  .card-header {
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+
+  .form-control {
+    background-color: #3a3a3a;
+    color: #fff;
+    border: 1px solid #555;
+  }
+
+  .form-control::placeholder {
+    color: #ccc;
+  }
+
+  .table {
+    color: #fff;
+  }
+
+  .table thead {
+    background-color: #444;
+  }
+
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #2e2e2e;
+  }
