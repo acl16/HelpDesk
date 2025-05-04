@@ -26,7 +26,7 @@ Submit — your ticket will appear under "My Tickets".
 ## 3. Tracking Your Ticket
 View the ticket status: Open, Pending, Resolved.
 
-Communicate with agents via ticket comments.
+Communicate with the admin via ticket comments.
 
 Check the ticket timeline for updates.
 
@@ -48,16 +48,16 @@ Users receive a satisfaction survey to rate the service.
 
 ## Features
 - User registration and login system
-- Role-based access (Admin, Agent, User)
+- Role-based access (Admin, User)
 - Submit support ticket (category, description)
 - View ticket status (Open, Pending, Resolved)
-- Assign tickets to support agents
-- Comments and messages between users and agents
+- Assign tickets to admin
+- Comments and messages between users and admin
 - Ticket priority levels (Low, Medium, High)
 - Tagging and categorizing tickets
 - Search and filter tickets by status or keywords
 - Ticket escalation and reassignment
-- SLA timers and reminders for agents
+- SLA timers and reminders for admin
 - Notification system (in-app or email)
 - Analytics dashboard (ticket metrics, resolution time)
 - Ticket history timeline (track updates)
