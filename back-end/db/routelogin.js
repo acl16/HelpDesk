@@ -1,39 +1,73 @@
 const express = require('express');
-const db = require('./db'); 
+const db = require('./db');
 const router = express.Router();
 
-
 router.post("/login", (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    if (!email || !password) {
-        return res.status(400).json({ success: false, message: "Email and password are required" });
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: "Email and password are required" });
+  }
+
+  const sql = `
+    SELECT u.*, r.RoleName 
+    FROM USER u 
+    JOIN ROLE r ON u.role_id = r.role_id 
+    WHERE u.email = ?
+  `;
+
+  db.query(sql, [email], (err, result) => {
+    if (err) {
+      console.error("Database error:", err.sqlMessage);
+      return res.status(500).json({ success: false, message: `Database error: ${err.sqlMessage}` });
     }
 
-    const sql = "SELECT * FROM USER WHERE email = ?";
-    db.query(sql, [email], (err, result) => {
-        if (err) {
-            console.error("Database error:", err.sqlMessage);
-            return res.status(500).json({ success: false, message: `Database error: ${err.sqlMessage}` });
-        }
+    const user = result[0];
+    if (!user) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
 
-        if (result.length === 0 || result[0].password !== password) {
-            return res.status(401).json({ success: false, message: "Invalid email or password" });
-        }
+    if (user.password !== password) {
+      return res.status(401).json({ success: false, message: "Invalid email or password" });
+    }
 
-        
-        const userId = result[0].id;
-        const loginTime = new Date();
-        const logSql = "INSERT INTO login_logs (user_id, login_time) VALUES (?, ?)";
-        db.query(logSql, [userId, loginTime], (logErr) => {
-            if (logErr) {
-                console.error("Login log error:", logErr.sqlMessage);
-            }
-        });
+    req.session.user = {
+      id: user.user_id,
+      email: user.email,
+      firstname: user.firstname,
+      role_id: user.role_id,
+      role: user.RoleName  
+    };
 
-        res.status(200).json({ success: true, message: "Login successful" });
-        
+    req.session.save(err => {
+      if (err) {
+        console.error('Session save error:', err);
+        return res.status(500).json({ success: false, message: "Session error" });
+      }
+
+      let redirectTo = '/';
+      if (user.role_id === 2) {
+        redirectTo = '/AdminDashboard';
+      } else if (user.role_id === 3) {
+        redirectTo = '/user-dashboard';
+      }
+
+      return res.json({
+        success: true,
+        redirectTo: redirectTo
+      });
     });
+  });
+});
+
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Could not log out.');
+    }
+    res.redirect('/login');
+  });
 });
 
 module.exports = router;
