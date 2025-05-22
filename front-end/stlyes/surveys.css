@@ -1,0 +1,80 @@
+body {
+  background: #f8f9fa; 
+  color: #212529; 
+  min-height: 100vh;
+  margin-left: 250px;
+  transition: margin-left 0.3s;
+}
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #212529; 
+  padding: 1rem;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  color: #f8f9fa;
+}
+
+#sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+#sidebar .sidebar-link {
+  color: #f8f9fa;
+  display: block;
+  padding: 10px 0;
+  text-decoration: none;
+}
+
+#sidebar .sidebar-link:hover {
+  color: #0d6efd;
+}
+
+.burger-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.burger-container {
+  position: absolute;
+  left: 0;
+}
+
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.card {
+  background-color: #ffffff; 
+  border-color: rgb(153, 151, 151);
+  color: #212529; 
+}
+
+.card-header {
+  background-color: #343a40;
+  color: #f8f9fa;
+}
+
+.view-btn {
+  background-color: rgb(36, 36, 36);
+  color: white;
+  border: 1px solid #444;
+}
+
+.view-btn:hover {
+  background-color: #444;
+  color: #ddd;
+}
