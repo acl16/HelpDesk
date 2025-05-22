@@ -11,17 +11,15 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
     res.sendFile(path.join(__dirname, "../../front-end/views/signup.html"));
 });
-router.get("/user-dashboard", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../front-end/views/user-dashboard.html"));
-});
+
 router.get("/AdminDashboard", (req, res) => {
     res.sendFile(path.join(__dirname, "../../front-end/views/AdminDashboard.html"));
 });
 
 router.post("/signup", (req, res) => {
     const { firstName, lastName, email, password } = req.body;
-    const roleId = req.body.roleId || 1;
-    const createdAt = req.body.createdAt || new Date();
+    const roleId = 3; 
+    const createdAt = new Date();
 
     console.log("Received data:", req.body);
 
@@ -40,9 +38,7 @@ router.post("/signup", (req, res) => {
             return res.status(500).json({ message: `Database error: ${err.sqlMessage}` });
         }
         res.status(201).json({ message: "Signup successful!" });
-
     });
 });
-
 
 module.exports = router;

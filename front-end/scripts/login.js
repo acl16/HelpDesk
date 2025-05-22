@@ -4,18 +4,15 @@ document.querySelector('form').addEventListener('submit', function(event) {
   const email = document.querySelector('#email').value;
   const password = document.querySelector('#password').value;
 
-  const data = { email, password };
-
   fetch('/login', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
   })
-  .then(response => {
-    if (response.ok) {
-      window.location.href = '/user-dashboard';
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      window.location.href = data.redirectTo;
     } else {
       alert('Invalid credentials!');
     }
