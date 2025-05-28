@@ -2,21 +2,23 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
     body {
       background-color: #f8f9fa;
     }
+
     .sidebar {
       min-height: 100vh;
       background-color: #343a40;
       color: white;
       padding: 20px;
     }
+
     .sidebar a {
       color: white;
       text-decoration: none;
@@ -25,27 +27,15 @@
       margin-bottom: 10px;
       border-radius: 5px;
     }
+
     .sidebar a:hover {
       background-color: #495057;
     }
+
     .content {
       padding: 20px;
     }
-    .hidden-section {
-      display: none;
-    }
-    .sidebar .nav-link {
-      padding: 12px 15px;
-    }
-    .sidebar h4 {
-      margin-bottom: 30px;
-    }
-    .sidebar ul li a {
-      font-size: 18px;
-    }
-    .card-body h5 {
-      font-size: 1.2rem;
-    }
+
     @media (max-width: 768px) {
       .sidebar {
         position: fixed;
@@ -56,9 +46,11 @@
         width: 250px;
         transition: left 0.3s;
       }
+
       .sidebar.open {
         left: 0;
       }
+
       .content {
         margin-left: 250px;
       }
@@ -75,41 +67,46 @@
         <h4 class="text-white mb-4">👤 User menu</h4>
         <ul class="nav flex-column">
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#home" onclick="showSection('home')">
+            <a class="nav-link text-white" href="user-dashboard.html">
               <i class="bi bi-house-door"></i> Home
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#profile" onclick="showSection('profile')">
+            <a class="nav-link text-white" href="profile.html">
               <i class="bi bi-person-circle"></i> Profile
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#notifications" onclick="showSection('notifications')">
+            <a class="nav-link text-white" href="notifications.html">
               <i class="bi bi-bell"></i> Notifications
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#submittedTickets" onclick="showSection('submittedTickets')">
+            <a class="nav-link text-white" href="submittedtickets.html">
               <i class="bi bi-card-list"></i> Submitted Tickets
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#submitTicket" onclick="showSection('submitTicket')">
+            <a class="nav-link text-white" href="submitAticket.html">
               <i class="bi bi-pencil-square"></i> Submit Ticket
             </a>
           </li>
           <li class="nav-item mb-2">
-            <a class="nav-link text-white" href="#sla" onclick="showSection('sla')">
+            <a class="nav-link text-white" href="sla.html">
               <i class="bi bi-clock-history"></i> SLA Info
             </a>
           </li>
+          <li class="nav-item mt-auto">
+  <a href="#" class="nav-link text-danger" onclick="confirmLogout(event)">
+    <i class="bi bi-box-arrow-right me-2"></i> Logout
+  </a>
+</li>
+
         </ul>
       </nav>
 
       <!-- Main Content -->
       <main class="col-md-9 col-12 content">
-
         <!-- Home -->
         <section id="home" class="mb-4">
           <h3>Welcome to Your Dashboard</h3>
@@ -163,192 +160,26 @@
             </div>
           </div>
         </section>
-
-        <!-- Profile Info -->
-        <section id="profile" class="mb-4 hidden-section">
-          <h3>Profile Overview</h3>
-          <p><strong>Name:</strong> John Doe</p>
-          <p><strong>Email:</strong> johndoe@example.com</p>
-        </section>
-
-        <!-- Notifications -->
-        <section id="notifications" class="mb-4 hidden-section">
-          <h3>Notifications</h3>
-          <ul class="list-group">
-            <li class="list-group-item">Ticket #123 updated</li>
-            <li class="list-group-item">New comment on your ticket</li>
-          </ul>
-        </section>
-
-        <!-- Submit Ticket -->
-        <section id="submitTicket" class="mb-4 hidden-section">
-  <h3>Submit a New Ticket</h3>
-  <div class="container py-4">
-    <div class="card shadow">
-      <div class="card-header bg-primary text-white">
-        <h4 class="mb-0"><i class="bi bi-life-preserver me-2"></i>Submit a Help Desk Ticket</h4>
-      </div>
-      <div class="card-body">
-        <form id="ticketForm" onsubmit="event.preventDefault(); showModal();" novalidate>
-
-          <!-- Email -->
-          <div class="mb-3">
-            <label for="email" class="form-label"><i class="bi bi-envelope-fill me-1 text-primary"></i>Email Address <small class="text-muted">(Required)</small></label>
-            <input type="email" class="form-control" id="email" placeholder="yourname@example.com" required />
-            <div class="invalid-feedback">Please provide a valid email address.</div>
-          </div>
-
-          <!-- Category -->
-          <div class="mb-3">
-            <label for="category" class="form-label"><i class="bi bi-tags-fill me-1 text-info"></i>Category <small class="text-muted">(Required)</small></label>
-            <select class="form-select" id="category" required onchange="toggleOtherCategory()">
-              <option selected disabled value="">Select a category</option>
-              <option value="Technical Issue">Technical Issue</option>
-              <option value="Network Problem">Network Problem</option>
-              <option value="Software Installation">Software Installation</option>
-              <option value="Hardware Request">Hardware Request</option>
-              <option value="Account Access">Account Access</option>
-              <option value="Password Reset">Password Reset</option>
-              <option value="Bug Report">Bug Report</option>
-              <option value="Feature Request">Feature Request</option>
-              <option value="Email Issue">Email Issue</option>
-              <option value="Other">Other</option>
-            </select>
-            <div class="invalid-feedback">Please select a category.</div>
-          </div>
-
-          <!-- Other Category -->
-          <div class="mb-3" id="otherCategoryDiv" style="display: none;">
-            <label for="otherCategory" class="form-label"><i class="bi bi-pencil-fill me-1 text-warning"></i>Other Category</label>
-            <input type="text" class="form-control" id="otherCategory" placeholder="Please specify..." />
-          </div>
-
-          <!-- Description -->
-          <div class="mb-3">
-            <label for="description" class="form-label"><i class="bi bi-card-text me-1 text-secondary"></i>Issue Description <small class="text-muted">(Required)</small></label>
-            <textarea class="form-control" id="description" rows="4" placeholder="Describe the issue..." required></textarea>
-            <div class="invalid-feedback">Please provide a detailed description of your issue.</div>
-          </div>
-
-          <!-- Priority -->
-          <div class="mb-3">
-            <label for="priority" class="form-label"><i class="bi bi-flag-fill me-1 text-danger"></i>Priority <small class="text-muted">(Required)</small></label>
-            <select class="form-select" id="priority" required>
-              <option selected disabled value="">Select priority</option>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </select>
-            <div class="invalid-feedback">Please select a priority level.</div>
-          </div>
-
-          <!-- File Attachment -->
-          <div class="mb-3">
-            <label for="attachment" class="form-label"><i class="bi bi-paperclip me-1 text-muted"></i>Attachment (optional)</label>
-            <input class="form-control" type="file" id="attachment" />
-          </div>
-
-          <!-- Hidden Status -->
-          <input type="hidden" id="status" name="status" value="Open" />
-
-          <!-- Submit Button -->
-          <div class="d-grid mt-4">
-            <button type="submit" class="btn btn-success">
-              <i class="bi bi-send-check me-1"></i> Submit Ticket
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Confirmation -->
-  <div class="modal fade" id="ticketSuccess" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content text-center">
-        <div class="modal-header bg-success text-white">
-          <h5 class="modal-title w-100"><i class="bi bi-check-circle-fill me-2"></i>Ticket Submitted!</h5>
-        </div>
-        <div class="modal-body">
-          <p>Your ticket has been received. Our team will contact you shortly.</p>
-          <button class="btn btn-success" data-bs-dismiss="modal">OK</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-        
-        <section id="submittedTickets" class="mb-4 hidden-section">
-          <h3>Your Submitted Tickets</h3>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Created At</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>123</td>
-                <td>Technical Issue</td>
-                <td>Open</td>
-                <td>2025-05-04</td>
-              </tr>
-              <tr>
-                <td>124</td>
-                <td>Account Problem</td>
-                <td>Closed</td>
-                <td>2025-05-03</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-   
-        <section id="sla" class="mb-4 hidden-section">
-          <h3>Service Level Agreements</h3>
-          <ul>
-            <li>Ticket #123: Respond by 12:00 PM, Resolve by 5:00 PM</li>
-          </ul>
-        </section>
-
-        <section id="feedback" class="hidden-section">
-          <h3>Feedback & Comments</h3>
-          <form>
-            <div class="mb-3">
-              <label class="form-label">Overall Satisfaction</label>
-              <select class="form-select">
-                <option>5 - Excellent</option>
-                <option>4 - Very Good</option>
-                <option>3 - Good</option>
-                <option>2 - Fair</option>
-                <option>1 - Poor</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Additional Comments</label>
-              <textarea class="form-control" rows="4" placeholder="Share your thoughts..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Submit Feedback</button>
-          </form>
-        </section>
-
       </main>
     </div>
   </div>
-
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.content section').forEach(sec => {
-        sec.classList.add('hidden-section');
-      });
-      document.getElementById(id).classList.remove('hidden-section');
-    }
-  </script>
+function confirmLogout(event) {
+  event.preventDefault();
+  if (confirm("Are you sure you want to log out?")) {
+    // Call backend logout, then go to logout.html
+    fetch('/logout', {
+      method: 'GET',
+      credentials: 'include'
+    }).then(() => {
+      window.location.href = '/logout.html';
+    }).catch(err => {
+      console.error("Logout failed", err);
+      alert("Logout failed. Try again.");
+    });
+  }
+}
+</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

@@ -17,6 +17,7 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'front-end')));
+app.use(express.static(path.join(__dirname, 'front-end', 'views')));
 
 function isAuthenticated(req, res, next) {
   if (req.session && req.session.user) return next();
@@ -45,9 +46,23 @@ app.get('/user-dashboard', isAuthenticated, isUser, (req, res) => {
 app.get('/AdminDashboard', isAuthenticated, isAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, 'front-end', 'views', 'AdminDashboard.html'));
 });
+app.get('/submittedtickets', isAuthenticated, isUser, (req, res) => {
+  res.sendFile(path.join(__dirname, 'front-end', 'views', 'submittedtickets.html'));
+});
+app.get('/submitAticket', isAuthenticated, isUser, (req, res) => {
+  res.sendFile(path.join(__dirname, 'front-end', 'views', 'submitAticket.html'));
+});
 
 app.use("/", require("./back-end/db/routes"));
 app.use("/", require("./back-end/db/routelogin"));
+app.use("/", require("./back-end/db/tickets"));
+app.use("/", require("./back-end/db/formRoutes"));
+app.use('/', require('./back-end/db/profileRoute'));
+app.use('/', require('./back-end/db/slaRoute'));
+app.use('/', require('./back-end/db/logoutRoute'));
+app.use('/', require('./back-end/db/adminTicketsRoute'));
+
+
 
 
 connection.connect((err) => {
