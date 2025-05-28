@@ -32,7 +32,7 @@ router.post("/login", (req, res) => {
     }
 
     req.session.user = {
-      id: user.user_id,
+       user_id: user.user_id, 
       email: user.email,
       firstname: user.firstname,
       role_id: user.role_id,
