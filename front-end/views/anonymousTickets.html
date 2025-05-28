@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Submit Ticket</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body class="bg-light">
+
+  <div class="d-flex align-items-center justify-content-center min-vh-100 p-3">
+    <section id="submitTicket" class="w-100" style="max-width: 600px;">
+      <div class="card shadow w-100">
+        <div class="card-header bg-dark text-white">
+          <h4 class="mb-0"><i class="bi bi-life-preserver me-2"></i>Submit your anonymous ticket</h4>
+        </div>
+        <div class="card-body">
+          <form id="ticketForm" novalidate>
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                <i class="bi bi-envelope-fill me-1 text-dark"></i>Email Address <small class="text-muted">(Required)</small>
+              </label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="yourname@example.com" required />
+              <div class="invalid-feedback">Please provide a valid email address.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="category" class="form-label">
+                <i class="bi bi-tags-fill me-1 text-dark"></i>Category <small class="text-muted">(Required)</small>
+              </label>
+              <select class="form-select" id="category" name="category" required onchange="toggleOtherCategory()">
+                <option selected disabled value="">Select a category</option>
+                <option value="Technical Issue">Technical Issue</option>
+                <option value="Network Problem">Network Problem</option>
+                <option value="Software Installation">Software Installation</option>
+                <option value="Hardware Request">Hardware Request</option>
+                <option value="Account Access">Account Access</option>
+                <option value="Password Reset">Password Reset</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Email Issue">Email Issue</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="invalid-feedback">Please select a category.</div>
+            </div>
+
+            <div class="mb-3" id="otherCategoryDiv" style="display: none;">
+              <label for="otherCategory" class="form-label">
+                <i class="bi bi-pencil-fill me-1 text-dark"></i>Other Category
+              </label>
+              <input type="text" class="form-control" id="otherCategory" name="otherCategory" placeholder="Please specify..." />
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">
+                <i class="bi bi-card-text me-1 text-dark"></i>Issue Description <small class="text-muted">(Required)</small>
+              </label>
+              <textarea class="form-control" id="description" name="description" rows="4" placeholder="Describe the issue..." required></textarea>
+              <div class="invalid-feedback">Please provide a detailed description of your issue.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="priority" class="form-label">
+                <i class="bi bi-flag-fill me-1 text-dark"></i>Priority <small class="text-muted">(Required)</small>
+              </label>
+              <select class="form-select" id="priority" name="priority" required>
+                <option selected disabled value="">Select priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+              <div class="invalid-feedback">Please select a priority level.</div>
+            </div>
+
+            <div class="mb-3">
+              <label for="attachment" class="form-label">
+                <i class="bi bi-paperclip me-1 text-muted"></i>Attachment (optional)
+              </label>
+              <input class="form-control" type="file" id="attachment" name="attachment" />
+            </div>
+
+            <input type="hidden" id="status" name="status" value="Open" />
+
+            <div class="d-grid mt-4">
+              <button type="submit" class="btn btn-dark">
+                <i class="bi bi-send-check me-1"></i> Submit Ticket
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+<script src="/front-end/scripts/anonymousTickets.js"></script>
+</body>
+
+</html>
