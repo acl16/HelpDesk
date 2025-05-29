@@ -1,35 +1,64 @@
-// Toggles the sidebar visibility and adjusts body margin
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const body = document.body;
+document.addEventListener('DOMContentLoaded', () => {
+  const ticketBody = document.getElementById('ticketBody');
+  const searchInput = document.getElementById('searchInput');
+  const totalCount = document.getElementById('total');
+  const pendingCount = document.getElementById('pending');
+  const resolvedCount = document.getElementById('resolved');
+  const slaCount = document.getElementById('sla');
 
-  sidebar.classList.toggle("hidden");
+  // Fetch all tickets for admin
+  fetch('/api/admin/tickets', {
+    method: 'GET',
+    credentials: 'include'
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (!data.success) {
+        alert('Failed to load tickets.');
+        return;
+      }
 
-  body.style.marginLeft = sidebar.classList.contains("hidden") ? "0" : "250px";
-}
+      const tickets = data.tickets;
+      let pending = 0;
+      let resolved = 0;
 
-// Loads ticket data into the dashboard
-function loadDashboard() {
-  const total = ticketData.length;
-  const pending = ticketData.filter(t => t.status === "Pending").length;
-  const resolved = ticketData.filter(t => t.status === "Resolved").length;
+      // Display tickets in table
+      tickets.forEach(ticket => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${ticket.ticket_id}</td>
+          <td>${ticket.category}</td>
+          <td>${ticket.status}</td>
+          <td>${ticket.priority}</td>
+          <td><button class="btn btn-sm btn-outline-primary" onclick="alert('Feature coming soon')">View</button></td>
+        `;
+        ticketBody.appendChild(row);
 
-  document.getElementById("total").textContent = total;
-  document.getElementById("pending").textContent = pending;
-  document.getElementById("resolved").textContent = resolved;
+        // Count pending and resolved
+        const status = ticket.status.toLowerCase();
+        if (status === 'pending' || status === 'open') pending++;
+        if (status === 'resolved' || status === 'closed') resolved++;
+      });
 
-  const tbody = document.getElementById("ticketBody");
-  ticketData.forEach(ticket => {
-    tbody.innerHTML += `
-      <tr>
-        <td>${ticket.id}</td>
-        <td>${ticket.title}</td>
-        <td>${ticket.status}</td>
-        <td>${ticket.priority}</td>
-        <td><button class="btn btn-sm view-btn">View</button></td>
-      </tr>
-    `;
+      // Update dashboard counters
+      totalCount.textContent = tickets.length;
+      pendingCount.textContent = pending;
+      resolvedCount.textContent = resolved;
+      slaCount.textContent = tickets.length; // Optional: adjust if only some have SLA
+    })
+    .catch(error => {
+      console.error('Error fetching tickets:', error);
+      alert('Error fetching ticket data.');
+    });
+
+  // Live search
+  searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.toLowerCase();
+    const rows = document.querySelectorAll('#ticketBody tr');
+
+    rows.forEach(row => {
+      const match = row.textContent.toLowerCase().includes(keyword);
+      row.style.display = match ? '' : 'none';
+    });
   });
-}
-
-document.addEventListener("DOMContentLoaded", loadDashboard);
+});
